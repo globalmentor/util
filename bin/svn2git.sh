@@ -8,6 +8,8 @@
 #Recommended files: authors.txt
 #Optional files added to repository: .gitattributes, .gitignore, authors.txt, contributors.txt
 #Requires: svndumpsanitizer, subgit, git
+#If the Subversion repository does not have the standard layout and you want
+# the literal directory structure converted, specify a sourcepath of "/".
 sourcedump=$1
 sourcepath=$2
 workpath=$PWD
@@ -15,7 +17,7 @@ set -e
 #
 # sanitize the Subversion dump if a sourcepath was given
 #
-if [ -n "$sourcepath" ]; then
+if [ -n "$sourcepath" ] && [ "$sourcepath" != "/" ]; then
   repo=$(basename $sourcepath)
   cleandump=${repo}.dump
   svndumpsanitizer --drop-empty --add-delete --infile $sourcedump --outfile $cleandump --include $sourcepath
@@ -32,7 +34,7 @@ svnadmin create ${repo}-svn
 svnadmin load ${repo}-svn < $cleandump
 #
 # convert Subversion repository to Git
-# if sourcepath was given, use that as the single directory;
+# if sourcepath was given, use a literal directory layout;
 # otherwise attempt to detect layout
 #
 if [ -n "$sourcepath" ]; then
@@ -62,9 +64,9 @@ popd
 git clone ${repo}.git ${repo}-git
 pushd ${repo}-git
 #
-# redefine root if sourcepath was given
+# redefine root if a sourcepath other than "/? was given
 #
-if [ -n "$sourcepath" ]; then
+if [ -n "$sourcepath" ] && [ "$sourcepath" != "/" ]; then
   git mv ${sourcepath}/* .
   git commit -m "Redefined the root of the repository after conversion from Subversion."
   git push
