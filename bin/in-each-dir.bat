@@ -7,7 +7,8 @@ IF [%2]==[] GOTO usage
 
 ECHO Performing command inside all directories %1...
 FOR /D %%D in (%1) DO (
-echo %%D
+	ECHO.
+	ECHO %%D...
 	pushd %%D
 	%2 %3 %4 %5 %6 %7 %8 %9
 	popd

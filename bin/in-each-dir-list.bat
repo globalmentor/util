@@ -7,6 +7,8 @@ IF [%2]==[] GOTO usage
 
 ECHO Performing command in all directories in list %1...
 FOR /F "tokens=*" %%R in (%1) DO (
+	ECHO.
+	ECHO %%R...
 	pushd %%R
 	%2 %3 %4 %5 %6 %7 %8 %9
 	popd
