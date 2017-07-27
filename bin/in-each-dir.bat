@@ -3,7 +3,7 @@ REM In Each Directory
 REM Copyright (c) 2016 GlobalMentor, Inc.
 
 IF [%1]==[] GOTO usage
-IF NOT [%2]==[--do] GOTO usage
+IF NOT [%2]==[--do] GOTO nodo
 IF [%3]==[] GOTO usage
 
 ECHO Performing command inside all directories %1...
@@ -15,6 +15,10 @@ FOR /D %%D in (%1) DO (
 	popd
 )
 GOTO :eof
+
+:nodo
+@ECHO Error: you must separate the directory list from the command(s) using '--do'.
+EXIT /B 1
 
 :usage
 @ECHO In Each Directory
