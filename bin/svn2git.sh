@@ -1,6 +1,6 @@
 #!/bin/sh
 #svn2git.sh <sourcedump> [<sourcepath>]
-#Copyright (c) 2015 GlobalMentor, Inc.
+#Copyright (c) 2015-2018 GlobalMentor, Inc.
 #Converts a path in a given Subversion dump file to Git.
 #  <sourcedump>: The name of the source Subversion dump file.
 #  [<sourcepath>]: The optional repository path to convert to Git, excluding all other paths and making it the root path.
@@ -13,6 +13,7 @@
 sourcedump=$1
 sourcepath=$2
 workpath=$PWD
+binpath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 set -e
 #
 # sanitize the Subversion dump if a sourcepath was given
@@ -56,7 +57,7 @@ rm $cleandump
 # normalize eols
 #
 pushd ${repo}.git
-eval git filter-branch --tree-filter '${workpath}/tree-normalize-eol-lf.sh' -- --all
+eval git filter-branch --tree-filter '${binpath}/tree-normalize-eol-lf.sh' -- --all
 popd
 #
 # clone to repo-git
