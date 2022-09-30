@@ -1,5 +1,5 @@
 @ECHO OFF
-REM Maven Set Versions by Garret Wilson
+REM Maven Set Version by Garret Wilson
 REM Copyright (c) 2018 GlobalMentor, Inc.
 
 SETLOCAL
@@ -28,7 +28,7 @@ IF "%PARAM%" == "--all" (
 GOTO args
 :endargs
 
-mvn versions:set -DnewVersion=%NEW_VERSION% -DgenerateBackupPoms=false %ALL%
+CALL mvn versions:set -DnewVersion=%NEW_VERSION% -DgenerateBackupPoms=false %ALL%
 GOTO :eof
 
 :usage
