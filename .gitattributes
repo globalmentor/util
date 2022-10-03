@@ -39,6 +39,7 @@
 *.pdf binary
 *.png binary
 *.properties text
+*.ps1 eol=lf
 *.sh eol=lf
 *.so binary
 *.sql text
