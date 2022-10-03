@@ -5,6 +5,7 @@
 *.bz2 binary
 *.bzip2 binary
 *.class binary
+*.cmd eol=crlf
 *.css text
 *.csv text
 *.dll binary
