@@ -10,7 +10,7 @@ if (git status --porcelain) {
 
 $prereleaseVer = mvn-get-ver
 if (!$prereleaseVer.EndsWith("-SNAPSHOT")) {
-  throw "Only ``-SNAPSHOT`` versions can be prepard for release; current version is ${prereleaseVer}."
+  throw "Only ``-SNAPSHOT`` versions can be prepared for release; current version is ${prereleaseVer}."
 }
 
 mvn-use-release-vers

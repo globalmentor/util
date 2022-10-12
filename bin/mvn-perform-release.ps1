@@ -9,7 +9,7 @@ if (git status --porcelain) {
   throw "Git status must be clean before release."
 }
 
- mvn clean deploy -P release
+mvn clean deploy -P release
 if ($LASTEXITCODE) {
   throw "Maven did not deploy successfully."
 } 
