@@ -16,4 +16,4 @@ if ($LASTEXITCODE) {
 mvn-tag-ver-release
 $ver = mvn-get-ver
 
-Write-Host "Project version ${ver} released."
+Write-Host "`nProject version ${ver} released.`n" -ForegroundColor Cyan
