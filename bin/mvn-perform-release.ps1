@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
 # Maven Perform Release by Garret Wilson
 # Copyright © 2022 GlobalMentor, Inc.
-# Assumes the Maven project has a `release` profile.
+# Assumes the Maven project has a `publish` profile.
 
 $ErrorActionPreference = "Stop"
 
@@ -9,7 +9,7 @@ if (git status --porcelain) {
   throw "Git status must be clean before release."
 }
 
-mvn clean deploy -P release
+mvn clean deploy -P publish
 if ($LASTEXITCODE) {
   throw "Maven did not deploy successfully."
 } 
