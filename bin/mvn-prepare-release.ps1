@@ -17,6 +17,5 @@ mvn-use-release-vers
 mvn-remove-ver-snapshot
 $ver = mvn-get-ver
 git commit -am "Prepared project for v${ver} release."
-mvn-list-outdated-dependencies
 
 Write-Host "`nProject version ${ver} prepared for release.`n" -ForegroundColor Cyan
