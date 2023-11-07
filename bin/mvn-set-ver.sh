@@ -2,14 +2,13 @@
 # Maven Set Version by Garret Wilson
 # Copyright © 2023 GlobalMentor, Inc.
 
-set -eu
+set -u
 
 usage() {
   echo 'mvn-set-ver' >&2
   echo 'Usage: mvn-set-ver <new-version> [--all]' >&2
   echo 'Updates the version number(s) in a Maven POM and all child POMS.' >&2
   echo 'If --all is specified, all submodules will be updated even if they are not children.' >&2
-  exit 1
 }
 
 args=()
@@ -30,7 +29,7 @@ while [ $# -gt 0 ]; do
       break;
       ;;
     --*)
-      echo "**Bad parameter: $1**" >&2
+      echo "$(tput bold)Bad parameter: $1$(tput sgr0)" >&2
       usage
       exit 1
       ;;
@@ -42,7 +41,7 @@ while [ $# -gt 0 ]; do
 done
 
 if [[ ${#args[@]} -ne 1 ]]; then
-  echo "**Incorrect number of arguments: ${#args[@]}**" >&2
+  echo "$(tput bold)Incorrect number of arguments: ${#args[@]}$(tput sgr0)" >&2
   usage
   exit 1
 fi
