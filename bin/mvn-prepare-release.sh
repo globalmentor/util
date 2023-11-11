@@ -9,9 +9,9 @@ if [[ $(git status --porcelain) ]]; then
   exit 1
 fi
 
-prereleaseVer=$(mvn-get-ver.sh) || exit
-if [[ $prereleaseVer != *-SNAPSHOT ]]; then
-  echo "Only \`-SNAPSHOT\` versions can be prepared for release; current version is $prereleaseVer." >&2
+oldVer=$(mvn-get-ver.sh) || exit
+if [[ $oldVer != *-SNAPSHOT ]]; then
+  echo "Only \`-SNAPSHOT\` versions can be prepared for release; current version is $oldVer." >&2
   exit 1
 fi
 
