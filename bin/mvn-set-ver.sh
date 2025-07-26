@@ -15,7 +15,7 @@ args=()
 all=""
 while [ $# -gt 0 ]; do
   case "$1" in
-    --all*) all=-DprocessAllModules; shift;;
+    --all) all=-DprocessAllModules; shift;;
     --help) usage; exit 0;;
     --) shift; while [ $# -gt 0 ]; do args+=("$1"); shift; done; break;;
     --*) echo "$(tput bold)Bad parameter: $1$(tput sgr0)" >&2; usage; exit 1 ;;
