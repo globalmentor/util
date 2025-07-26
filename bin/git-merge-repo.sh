@@ -9,6 +9,8 @@ usage() {
   echo 'git-merge-repo' >&2
   echo 'Usage: git-merge-repover <repo-url> [--subdir [<subdir>]] --msg-prefix <msg-prefix> [--repo-branch <repo-branch>] [--dry-run]' >&2
   echo 'Merges the history from another repository into the current branch.' >&2
+  echo 'If `--subdir` is indicated, the content will first be moved into a subdirectory before merging.' >&2
+  echo 'The current implementation will not move dotfiles into the subdirectory.' >&2
   echo 'If `--repo-branch` is not given, the repository branch with the same name as the current branch is used.' >&2
   echo '<subdir> defaults to the last segment of the repo path, without an extension.' >&2
   echo 'If given <msg-prefix> is prepended to each commit log message; quote if spaces are desired.' >&2
